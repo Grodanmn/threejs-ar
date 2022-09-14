@@ -11,7 +11,7 @@
         position:absolute */ } </style> -->
         <style>
             .button-holder {
-                text-align: center;
+                text-align: right;
             }
         </style>
     </head>
@@ -23,7 +23,8 @@
         -->
 
         <div class="button-holder">
-            <input type="button" id="snapshot" value="capture"/>
+            <!-- <input type="button" id="snapshot" value="capture"/> -->
+            <button id="snapshot" style="position: absolute; padding: 12px 6px; border: 1px solid rgb(255, 255, 255); border-radius: 4px; background: rgba(0, 0, 0, 0.1); color: rgb(255, 255, 255); font: 13px sans-serif; text-align: center; opacity: 0.5; outline: none; z-index: 999; cursor: pointer;">capture</button>
         </div>
 
         <script
@@ -253,9 +254,11 @@
                 renderer.xr.enabled = true;
                 container.appendChild(renderer.domElement);
 
+                var arButton = ARButton.createButton(renderer, { requiredFeatures: ['hit-test'], optionalFeatures: [ 'dom-overlay', 'dom-overlay-for-handheld-ar' ], domOverlay: { root: document.body } });
+                
                 document
                     .body
-                    .appendChild(ARButton.createButton(renderer));
+                    .appendChild(arButton);
 
                 // controllers
 
